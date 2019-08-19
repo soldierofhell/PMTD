@@ -168,6 +168,7 @@ class GenerateUtil:
             image_size = np.shape(cv2.imread(image_path))[:2]
             generate_item_image(coco_label.items_image, image_name, image_size)
             generate_item_annotation(coco_label.items_annotation, len(coco_label.items_image), i, image_size)
+            print(image_path)
 
         root_dir, image_dir_dict, image_template_dict, label_dir_dict, label_template_dict = self.src_info
         assert data_type in image_dir_dict.keys()
