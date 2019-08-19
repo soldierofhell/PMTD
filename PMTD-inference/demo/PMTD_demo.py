@@ -82,10 +82,12 @@ def main():
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     if args.output_type == "Image":
         predictions = pmtd_demo.run_on_opencv_image(image)
-        cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('image', 800, 800)
-        cv2.imshow('image', predictions[:, :, ::-1])
-        cv2.waitKey(0)
+        #cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+        #cv2.resizeWindow('image', 800, 800)
+        #cv2.imshow('image', predictions[:, :, ::-1])
+        #cv2.waitKey(0)
+        image_dir, image_file = os.path.split(args.image_path)        
+        cv2.imwrite(os.path.join(image_dir, 'pred_' + image_file), predictions[:, :, ::-1])
     else:
         predictions = pmtd_demo.compute_prediction(image)
         top_predictions = pmtd_demo.select_top_predictions(predictions)
