@@ -79,4 +79,4 @@ if __name__ == '__main__':
     #generate_cocojson('test', 9000, test_label_file)
     
     train_label_file = path.join(root_dir, 'annotations', 'train_coco.json')
-    generate_cocojson('training', 2000, train_label_file)
+    generate_cocojson('training', 20, train_label_file)
