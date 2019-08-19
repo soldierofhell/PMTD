@@ -131,9 +131,9 @@ class GenerateUtil:
         with open(label_path) as f:
             for line in f.readlines():
                 data = line.split(',')
-                print('data: ', data)
+                #print('data: ', data)
                 segmentation = np.asarray(data[:8], dtype=int)
-                iscrowd = 0 if data[9] != '###\n' else 1
+                iscrowd = 0 if data[8] != '###\n' else 1
                 points = segmentation.reshape((-1, 2))
                 segmentation = [segmentation.tolist()]
                 area = cv2.contourArea(points)
