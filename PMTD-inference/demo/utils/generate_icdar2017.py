@@ -60,7 +60,7 @@ if __name__ == '__main__':
         'test': 'ch8_test_images'
     }
     image_template_dict = {
-        'training': 'img_%d',
+        'training': 'image_%04d',
         'validation': 'img_%d',
         'test': 'ts_img_%05d'
     }
@@ -69,7 +69,7 @@ if __name__ == '__main__':
         'validation': 'ch8_validation_localization_transcription_gt_v2'
     }
     label_template_dict = {
-        'training': 'gt_img_%d.txt',
+        'training': 'gt_image_%04d.txt',
         'validation': 'gt_img_%d.txt',
     }
 
