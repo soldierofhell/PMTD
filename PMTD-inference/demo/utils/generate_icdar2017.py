@@ -75,5 +75,8 @@ if __name__ == '__main__':
 
     src_info = [root_dir, image_dir_dict, image_template_dict, label_dir_dict, label_template_dict]
 
-    test_label_file = path.join(root_dir, 'annotations', 'test_coco.json')
-    generate_cocojson('test', 9000, test_label_file)
+    #test_label_file = path.join(root_dir, 'annotations', 'test_coco.json')
+    #generate_cocojson('test', 9000, test_label_file)
+    
+    train_label_file = path.join(root_dir, 'annotations', 'train_coco.json')
+    generate_cocojson('training', 2000, train_label_file)
