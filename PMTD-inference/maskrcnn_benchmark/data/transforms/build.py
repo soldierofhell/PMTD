@@ -32,10 +32,10 @@ def build_transforms(cfg, is_train=True):
         hue=hue,
     )
 
-    if min_size < 0:
-        Resize = demo.Resize(max_size, with_target=True)
-    else:
-        Resize = T.Resize(min_size, max_size)
+    #if min_size < 0:
+    #    Resize = demo.Resize(max_size, with_target=True)
+    #else:
+    Resize = T.Resize(min_size, max_size)
     transform = T.Compose(
         [
             Resize,
