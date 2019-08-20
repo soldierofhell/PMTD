@@ -122,7 +122,7 @@ class DatasetCatalog(object):
         },
         "icdar_2017_mlt_train": {
             "img_dir": "icdar2017mlt/ch8_training_images",
-            "ann_file": "icdar2017mlt/annotations/test_coco.json"
+            "ann_file": "icdar2017mlt/annotations/train_coco.json"
         },
     }
 
