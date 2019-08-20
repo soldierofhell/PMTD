@@ -120,6 +120,10 @@ class DatasetCatalog(object):
             "img_dir": "icdar2017mlt/ch8_test_images",
             "ann_file": "icdar2017mlt/annotations/test_coco.json"
         },
+        "icdar_2017_mlt_train": {
+            "img_dir": "icdar2017mlt/ch8_training_images",
+            "ann_file": "icdar2017mlt/annotations/test_coco.json"
+        },
     }
 
     @staticmethod
