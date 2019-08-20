@@ -108,6 +108,10 @@ class DatasetCatalog(object):
             "img_dir": "icdar2015/ch4_test_images",
             "ann_file": "icdar2015/annotations/test_coco.json"
         },
+        "icdar_2015_train": {
+            "img_dir": "icdar2015/ch8_training_images",
+            "ann_file": "icdar2015/annotations/test_coco.json"
+        },
         "icdar_2017_mlt_val": {
             "img_dir": "icdar2017mlt/ch8_validation_images",
             "ann_file": "icdar2017mlt/annotations/validate_coco_with_ignore.json"
