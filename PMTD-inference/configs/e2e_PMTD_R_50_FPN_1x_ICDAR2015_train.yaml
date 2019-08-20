@@ -36,7 +36,7 @@ MODEL:
     SHARE_BOX_FEATURE_EXTRACTOR: False
   MASK_ON: True
 DATASETS:
-  TRAIN: ("icadar_2017_mlt_train", "icdar_2017_mlt_val")
+  TRAIN: ("icdar_2017_mlt_train",)
   TEST: ("icdar_2017_mlt_test",)
 DATALOADER:
   SIZE_DIVISIBILITY: 32
