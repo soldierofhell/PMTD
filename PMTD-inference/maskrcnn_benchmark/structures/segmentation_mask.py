@@ -414,6 +414,7 @@ class PolygonList(object):
         print(item)
         print(self.polygons)
         print(len(self.polygons))
+        print(self.polygons[0])
         if isinstance(item, int):
             selected_polygons = [self.polygons[item]]
         elif isinstance(item, slice):
