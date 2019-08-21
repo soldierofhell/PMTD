@@ -411,10 +411,6 @@ class PolygonList(object):
         return len(self.polygons)
 
     def __getitem__(self, item):
-        print(item)
-        print(self.polygons)
-        print(len(self.polygons))
-        print(self.polygons[0])
         if isinstance(item, int):
             selected_polygons = [self.polygons[item]]
         elif isinstance(item, slice):
@@ -427,7 +423,6 @@ class PolygonList(object):
                 item = item.squeeze(1) if item.numel() > 0 else item
                 item = item.tolist()
             for i in item:
-                print(i)
                 selected_polygons.append(self.polygons[i])
         return PolygonList(selected_polygons, size=self.size)
 
