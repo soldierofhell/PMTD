@@ -204,7 +204,7 @@ class COCODemo(object):
         image_list = to_image_list(image, self.cfg.DATALOADER.SIZE_DIVISIBILITY)
         image_list = image_list.to(self.device)
         # compute predictions
-        print(len(image_list), image_list[0].size())
+        print(image_list.tensors[0].size())
         with torch.no_grad():
             predictions = self.model(image_list)
         predictions = [o.to(self.cpu_device) for o in predictions]
