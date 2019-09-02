@@ -120,7 +120,7 @@ class PostProcessor(nn.Module):
         inds_all = scores > self.score_thresh
         for j in range(1, num_classes):
             inds = inds_all[:, j].nonzero().squeeze(1)
-            print('inds: ', inds)
+            print('inds: ', score_thresh, inds)
             scores_j = scores[inds, j]
             boxes_j = boxes[inds, j * 4 : (j + 1) * 4]
             boxlist_for_class = BoxList(boxes_j, boxlist.size, mode="xyxy")
