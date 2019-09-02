@@ -43,9 +43,9 @@ def remove_small_boxes(boxlist, min_size):
     xywh_boxes = boxlist.convert("xywh").bbox
     _, _, ws, hs = xywh_boxes.unbind(dim=1)
     print(ws.size(), hs.size())
-    test = (ws >= min_size)
-    
-    print(test.size())
+    ws_test = (ws >= min_size)
+    hs_test = (hs >= min_size)
+    print('ws, hs: ', ws_test.size(), hs_test.size())
     keep = (
         (ws >= min_size) & (hs >= min_size)
     ).nonzero().squeeze(1)
