@@ -26,6 +26,7 @@ class CombinedROIHeads(torch.nn.ModuleDict):
         x, detections, loss_box = self.box(features, proposals, targets)
         losses.update(loss_box)
         if self.cfg.MODEL.MASK_ON:
+            print(features.size())
             mask_features = features
             # optimization: during training, if we share the feature extractor between
             # the box and the mask heads, then we can reuse the features already computed
