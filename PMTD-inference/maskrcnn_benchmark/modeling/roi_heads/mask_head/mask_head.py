@@ -59,7 +59,6 @@ class ROIMaskHead(torch.nn.Module):
                 head. During testing, returns an empty dict.
         """
 
-        print(features[0].size())
         if self.training:
             # during training, only focus on positive boxes
             all_proposals = proposals
