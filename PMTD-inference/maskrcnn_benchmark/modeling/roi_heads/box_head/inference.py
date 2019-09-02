@@ -55,8 +55,6 @@ class PostProcessor(nn.Module):
         class_logits, box_regression = x
         class_prob = F.softmax(class_logits, -1)
         
-        print('class_prob: ', class_prob)
-
         # TODO think about a representation of batch of boxes
         image_shapes = [box.size for box in boxes]
         boxes_per_image = [len(box) for box in boxes]
@@ -120,7 +118,6 @@ class PostProcessor(nn.Module):
         inds_all = scores > self.score_thresh
         for j in range(1, num_classes):
             inds = inds_all[:, j].nonzero().squeeze(1)
-            print('inds: ', self.score_thresh, inds)
             scores_j = scores[inds, j]
             boxes_j = boxes[inds, j * 4 : (j + 1) * 4]
             boxlist_for_class = BoxList(boxes_j, boxlist.size, mode="xyxy")
