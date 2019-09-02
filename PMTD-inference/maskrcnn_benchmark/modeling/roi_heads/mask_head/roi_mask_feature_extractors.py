@@ -59,6 +59,7 @@ class MaskRCNNFPNFeatureExtractor(nn.Module):
     def forward(self, x, proposals):
         for xx in x:
             print(xx.size())
+        print(proposals)
         x = self.pooler(x, proposals)
         print(x.size())
 
