@@ -45,7 +45,7 @@ SOLVER:
   WARMUP_METHOD: 'linear' # PMTD use 'exponential' which is not implemented in maskrcnn-benchmark
   WARMUP_ITERS: 4500 # warmup_iter = (image_num=9000 * warmup_epoch=8 / batch_size=16)
   IMS_PER_BATCH: 2
-  BASE_LR: 0.0001 # PMTD use batch_size * 0.00125 with syncBN
+  BASE_LR: 0.00001 # PMTD use batch_size * 0.00125 with syncBN
   WEIGHT_DECAY: 0.0001
   STEPS: (49500, 76500) # warmup_iter + (iter * 0.5, iter * 0.8)
   MAX_ITER: 94500 # iter = (image_num=9000 * warmup_epoch=160 / batch_size=16) = 90000, max_iter = (warmup_iter + iter)
