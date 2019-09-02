@@ -30,6 +30,7 @@ class MaskRCNNC4Predictor_Upsample(nn.Module):
                 nn.init.kaiming_normal_(param, mode="fan_out", nonlinearity="relu")
 
     def forward(self, x):
+        print(x.size())
         x = F.relu(self.conv5_mask(x))
         # In PMTD, we move sigmoid from ROIMaskHead.post_processor to here
         return self.mask_fcn_logits(x).sigmoid()
