@@ -54,6 +54,8 @@ class PostProcessor(nn.Module):
         """
         class_logits, box_regression = x
         class_prob = F.softmax(class_logits, -1)
+        
+        print('class_prob: ', class_prob)
 
         # TODO think about a representation of batch of boxes
         image_shapes = [box.size for box in boxes]
