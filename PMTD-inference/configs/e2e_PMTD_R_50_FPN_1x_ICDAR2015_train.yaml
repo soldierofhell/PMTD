@@ -6,6 +6,7 @@ MODEL:
   RESNETS:
     BACKBONE_OUT_CHANNELS: 256
   RPN:
+    RPN_HEAD: "SingleConvRPNHead_Softmax"
     USE_FPN: True
     ANCHOR_STRIDE: (4, 8, 16, 32, 64)
     ANCHOR_SIZES: (16, 32, 64, 128, 256)
