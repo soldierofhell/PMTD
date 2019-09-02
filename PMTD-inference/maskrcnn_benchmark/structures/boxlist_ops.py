@@ -42,6 +42,7 @@ def remove_small_boxes(boxlist, min_size):
     # TODO maybe add an API for querying the ws / hs
     xywh_boxes = boxlist.convert("xywh").bbox
     _, _, ws, hs = xywh_boxes.unbind(dim=1)
+    print(ws, hs)
     keep = (
         (ws >= min_size) & (hs >= min_size)
     ).nonzero().squeeze(1)
