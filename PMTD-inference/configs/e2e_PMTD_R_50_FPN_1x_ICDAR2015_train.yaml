@@ -1,6 +1,6 @@
 MODEL:
   META_ARCHITECTURE: "GeneralizedRCNN"
-  WEIGHT: "/content/PMTD/PMTD-inference/models/PMTD_ICDAR2017MLT.pth" #"catalog://ImageNetPretrained/MSRA/R-50"
+  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50" # "/content/PMTD/PMTD-inference/models/PMTD_ICDAR2017MLT.pth"
   BACKBONE:
     CONV_BODY: "R-50-FPN"
   RESNETS:
