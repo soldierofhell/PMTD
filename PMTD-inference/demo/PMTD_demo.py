@@ -81,6 +81,7 @@ def main():
     image = cv2.imread(args.image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     if args.output_type == "Image":
+        print(image.shape)
         predictions = pmtd_demo.run_on_opencv_image(image)
         #cv2.namedWindow('image', cv2.WINDOW_NORMAL)
         #cv2.resizeWindow('image', 800, 800)
