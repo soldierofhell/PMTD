@@ -62,9 +62,10 @@ class Checkpointer(object):
         self._load_model(checkpoint)
         if "optimizer" in checkpoint and self.optimizer:
             self.logger.info("Loading optimizer from {}".format(f))
+            self.logger.info("optimizer defaults before checkpoint: " + str(self.optimizer.defaults))
             self.optimizer.load_state_dict(checkpoint.pop("optimizer"))
             #self.logger.info("optimizer state_dict: " + str(self.optimizer.state_dict()))
-            self.logger.info("optimizer state_dict: " + str(self.optimizer.defaults))
+            self.logger.info("optimizer defaults after checkpoint: " + str(self.optimizer.defaults))
         if "scheduler" in checkpoint and self.scheduler:
             self.logger.info("Loading scheduler from {}".format(f))
             self.scheduler.load_state_dict(checkpoint.pop("scheduler"))
