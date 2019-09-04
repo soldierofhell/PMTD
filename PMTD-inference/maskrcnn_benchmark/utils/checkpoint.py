@@ -67,7 +67,7 @@ class Checkpointer(object):
             self.optimizer.load_state_dict(checkpoint.pop("optimizer"))
             #self.logger.info("optimizer state_dict: " + str(self.optimizer.state_dict()))
             for p in self.optimizer.state_dict()["param_groups"]:
-                self.logger.info("optimizer lr before checkpoint: " + str(p["lr"]))
+                self.logger.info("optimizer lr after checkpoint: " + str(p["lr"]))
         if "scheduler" in checkpoint and self.scheduler:
             self.logger.info("Loading scheduler from {}".format(f))
             self.scheduler.load_state_dict(checkpoint.pop("scheduler"))
