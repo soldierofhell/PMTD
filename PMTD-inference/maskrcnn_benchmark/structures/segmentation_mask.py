@@ -207,7 +207,7 @@ class PolygonInstance(object):
 
         #""" This crashes the training way too many times...
         for p in polygons:
-            assert p[::2].min() >= 0
+            assert p[::2].min() >= 0, str(p[::2].min())
             assert p[::2].max() < size[0]
             assert p[1::2].min() >= 0
             assert p[1::2].max() < size[1]
