@@ -205,13 +205,13 @@ class PolygonInstance(object):
                 "Type of argument `polygons` is not allowed:%s" % (type(polygons))
             )
 
-        """ This crashes the training way too many times...
+        #""" This crashes the training way too many times...
         for p in polygons:
             assert p[::2].min() >= 0
             assert p[::2].max() < size[0]
             assert p[1::2].min() >= 0
-            assert p[1::2].max() , size[1]
-        """
+            assert p[1::2].max() < size[1]
+        #"""
 
         self.polygons = polygons
         self.size = tuple(size)
