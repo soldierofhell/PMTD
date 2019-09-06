@@ -39,7 +39,7 @@ def train(cfg, local_rank, distributed):
     model.to(device)
 
     optimizer = make_optimizer(cfg, model)
-    scheduler = make_lr_scheduler(cfg, optimizer)
+    scheduler = torch.optim.StepLR(optimizer, step_size=5, gamma=0.1) #make_lr_scheduler(cfg, optimizer)
 
     # Initialize mixed-precision training
     use_mixed_precision = cfg.DTYPE == "float16"
@@ -60,7 +60,7 @@ def train(cfg, local_rank, distributed):
 
     save_to_disk = get_rank() == 0
     checkpointer = DetectronCheckpointer(
-        cfg, model, optimizer, scheduler, output_dir, save_to_disk
+        cfg, model, None, None, output_dir, save_to_disk # , optimizer, scheduler
     )
     extra_checkpoint_data = checkpointer.load(cfg.MODEL.WEIGHT)
     arguments.update(extra_checkpoint_data)
