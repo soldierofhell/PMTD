@@ -39,7 +39,7 @@ def train(cfg, local_rank, distributed):
     model.to(device)
 
     optimizer = make_optimizer(cfg, model)
-    scheduler = torch.optim.StepLR(optimizer, step_size=5, gamma=0.1) #make_lr_scheduler(cfg, optimizer)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1) #make_lr_scheduler(cfg, optimizer)
 
     # Initialize mixed-precision training
     use_mixed_precision = cfg.DTYPE == "float16"
