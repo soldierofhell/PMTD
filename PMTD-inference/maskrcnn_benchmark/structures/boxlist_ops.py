@@ -42,10 +42,10 @@ def remove_small_boxes(boxlist, min_size):
     # TODO maybe add an API for querying the ws / hs
     xywh_boxes = boxlist.convert("xywh").bbox
     _, _, ws, hs = xywh_boxes.unbind(dim=1)
-    keep = (
-        (ws >= min_size) & (hs >= min_size)
-    ).nonzero().squeeze(1)
-    return boxlist[keep]
+    #keep = (
+    #    (ws >= min_size) & (hs >= min_size)
+    #).nonzero().squeeze(1)
+    return boxlist #[keep]
 
 
 # implementation from https://github.com/kuangliu/torchcv/blob/master/torchcv/utils/box.py
