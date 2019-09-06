@@ -39,6 +39,7 @@ def train(cfg, local_rank, distributed):
     model.to(device)
 
     optimizer = make_optimizer(cfg, model)
+    print('lr after initialization: ', optimizer.param_groups[0]["lr"])
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1) #make_lr_scheduler(cfg, optimizer)
 
     # Initialize mixed-precision training
@@ -64,6 +65,7 @@ def train(cfg, local_rank, distributed):
     )
     extra_checkpoint_data = checkpointer.load(cfg.MODEL.WEIGHT)
     arguments.update(extra_checkpoint_data)
+    print('lr after checkpoint: ', optimizer.param_groups[0]["lr"])
 
     data_loader = make_data_loader(
         cfg,
