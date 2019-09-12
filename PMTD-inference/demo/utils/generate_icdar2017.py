@@ -1,4 +1,4 @@
-from demo.utils.generate_util import GenerateUtil
+from generate_util import GenerateUtil # demo.utils.
 
 
 def generate_cocojson(data_type, image_num: int, output_label_file):
