@@ -52,6 +52,11 @@ def generate_cocojson_join(train_image_num, validate_image_num, output_label_fil
 
 if __name__ == '__main__':
     import os.path as path
+    
+    parser = argparse.ArgumentParser(description="ICDAR to COCO")    
+    parser.add_argument("--data_type", type=str, default='training')
+    parser.add_argument("--image_num", type=int, default=0)
+    args = parser.parse_args()
 
     root_dir = '/content/maskrcnn-benchmark/datasets/coco' #'datasets/icdar2017mlt'
     image_dir_dict = {
@@ -72,11 +77,15 @@ if __name__ == '__main__':
         'training': 'gt_img_%d.txt',
         'validation': 'gt_img_%d.txt',
     }
+    coco_json_dict = {
+        'training': 'instances_train2017.json',
+        'validation': 'instances_val2017.json',
+    }
 
     src_info = [root_dir, image_dir_dict, image_template_dict, label_dir_dict, label_template_dict]
 
     #test_label_file = path.join(root_dir, 'annotations', 'test_coco.json')
     #generate_cocojson('test', 9000, test_label_file)
     
-    train_label_file = path.join(root_dir, 'annotations', 'train_coco.json')
-    generate_cocojson('training', 3000, train_label_file)
+    train_label_file = path.join(root_dir, 'annotations', coco_json_dict[args.data_type])
+    generate_cocojson(args.data_type, args.image_num, train_label_file)
