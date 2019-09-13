@@ -53,10 +53,10 @@ def generate_cocojson_join(train_image_num, validate_image_num, output_label_fil
 if __name__ == '__main__':
     import os.path as path
 
-    root_dir = 'datasets/icdar2017mlt'
+    root_dir = '/content/maskrcnn-benchmark/datasets/coco' #'datasets/icdar2017mlt'
     image_dir_dict = {
-        'training': 'ch8_training_images',
-        'validation': 'ch8_validation_images',
+        'training': 'train2017', #'ch8_training_images',
+        'validation': 'val2017', #'ch8_validation_images',
         'test': 'ch8_test_images'
     }
     image_template_dict = {
@@ -65,8 +65,8 @@ if __name__ == '__main__':
         'test': 'ts_img_%05d'
     }
     label_dir_dict = {
-        'training': 'ch8_training_localization_transcription_gt_v2',
-        'validation': 'ch8_validation_localization_transcription_gt_v2'
+        'training': 'train_gt', #'ch8_training_localization_transcription_gt_v2',
+        'validation': 'val_gt', #'ch8_validation_localization_transcription_gt_v2'
     }
     label_template_dict = {
         'training': 'gt_img_%d.txt',
