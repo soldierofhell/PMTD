@@ -138,7 +138,7 @@ class GenerateUtil:
                 segmentation = [segmentation.tolist()]
                 area = cv2.contourArea(points)
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
-                keypoints = np.ones((points.shape[0],3))*2
+                keypoints = np.ones((points.shape[0],3), dtype=np.int8)*2
                 keypoints[:,:-1] = points
                 keypoints = np.ravel(keypoints).tolist()
                 annotation_info = {
