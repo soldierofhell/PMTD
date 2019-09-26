@@ -138,6 +138,9 @@ class GenerateUtil:
                 segmentation = [segmentation.tolist()]
                 area = cv2.contourArea(points)
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
+                keypoints = np.ones((points.shape[0],3))*2
+                keypoints[:,:-1] = points
+                keypoints = np.ravel(keypoints).tolist()
                 annotation_info = {
                     "id": len(items_annotation) + 1,
                     "image_id": image_id,
@@ -148,6 +151,8 @@ class GenerateUtil:
                     "segmentation": segmentation,
                     "width": image_size[1],
                     "height": image_size[0],
+                    "num_keypoints": 4,
+                    "keypoints": keypoints,
                 }
                 items_annotation.append(annotation_info)
 
