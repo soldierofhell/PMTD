@@ -138,9 +138,8 @@ class GenerateUtil:
                 segmentation = [segmentation.tolist()]
                 area = cv2.contourArea(points)
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
-                keypoints = np.ones((points.shape[0],3), dtype=np.int8)*2
-                keypoints[:,:-1] = points
-                keypoints = np.ravel(keypoints).tolist()
+                keypoints = np.hstack((points, 2*np.ones((points.shape[0], 1), dtype=np.int8))) 
+                keypoints = np.flatten(keypoints).tolist()
                 print('comparision: ', segmentation, keypoints)
                 annotation_info = {
                     "id": len(items_annotation) + 1,
