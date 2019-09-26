@@ -141,6 +141,7 @@ class GenerateUtil:
                 keypoints = np.ones((points.shape[0],3), dtype=np.int8)*2
                 keypoints[:,:-1] = points
                 keypoints = np.ravel(keypoints).tolist()
+                print('comparision: ', segmentation, keypoints)
                 annotation_info = {
                     "id": len(items_annotation) + 1,
                     "image_id": image_id,
