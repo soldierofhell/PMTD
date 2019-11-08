@@ -3,7 +3,7 @@ import argparse
 from generate_util import GenerateUtil # demo.utils.
 
 
-def generate_cocojson(data_type, image_num: int, output_label_file):
+def generate_cocojson(data_type, image_num: int, output_label_file, labels):
     """
 
     :param data_type:
@@ -15,7 +15,8 @@ def generate_cocojson(data_type, image_num: int, output_label_file):
         validate_label_file = path.join(root_dir, f'validate_coco_with_ignore.json')
         generate_cocojson('validation', 1800, validate_label_file)
     """
-    generate_util = GenerateUtil(src_info, with_dir_name=False, match_suffix=True, use_ignore=True)
+    
+    generate_util = GenerateUtil(src_info, with_dir_name=False, match_suffix=True, use_ignore=True, labels)
     coco_label = generate_util.get_coco_label()
 
     insert_annotation = generate_util.insert_factory(data_type)
@@ -58,6 +59,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="ICDAR to COCO")    
     parser.add_argument("--data_type", type=str, default='training')
     parser.add_argument("--image_num", type=int, default=0)
+    parser.add_argument("--labels", type=str, default='text')
     args = parser.parse_args()
 
     root_dir = '/content/maskrcnn-benchmark/datasets/coco' #'datasets/icdar2017mlt'
@@ -90,4 +92,4 @@ if __name__ == '__main__':
     #generate_cocojson('test', 9000, test_label_file)
     
     train_label_file = path.join(root_dir, 'annotations', coco_json_dict[args.data_type])
-    generate_cocojson(args.data_type, args.image_num, train_label_file)
+    generate_cocojson(args.data_type, args.image_num, train_label_file, args.labels)
