@@ -17,7 +17,7 @@ def generate_cocojson(data_type, image_num: int, output_label_file, labels):
     """
     
     labels_list = labels.split(',')
-    generate_util = GenerateUtil(src_info, with_dir_name=False, match_suffix=True, use_ignore=True, labels_list)
+    generate_util = GenerateUtil(src_info, with_dir_name=False, match_suffix=True, use_ignore=True, labels_list=labels_list)
     coco_label = generate_util.get_coco_label()
 
     insert_annotation = generate_util.insert_factory(data_type)
