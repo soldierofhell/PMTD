@@ -188,7 +188,8 @@ class GenerateUtil:
             label_path_template = path.join(root_dir, label_dir_dict[data_type], label_template_dict[data_type])
             generate_item_annotation = functools.partial(self.generate_item_true_annotation,
                                                          label_path_template=label_path_template,
-                                                         use_ignore=self.use_ignore)
+                                                         use_ignore=self.use_ignore,
+                                                        labels_list=self.labels_list)
         else:
             generate_item_annotation = self.generate_item_fake_annotation
 
