@@ -143,7 +143,7 @@ class GenerateUtil:
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
                 keypoints = np.hstack((points, 2*np.ones((points.shape[0], 1), dtype=np.int8))) 
                 keypoints = keypoints.flatten().tolist()
-                category_id = labels_list.index(data[8])+1
+                category_id = labels_list.index(data[8].strip())+1
                 annotation_info = {
                     "id": len(items_annotation) + 1,
                     "image_id": image_id,
