@@ -54,11 +54,12 @@ class CocoLabel:
 
 
 class GenerateUtil:
-    def __init__(self, src_info, with_dir_name, match_suffix, use_ignore):
+    def __init__(self, src_info, with_dir_name, match_suffix, use_ignore, labels_list):
         self.src_info = src_info
         self.with_dir_name = with_dir_name
         self.match_suffix = match_suffix
         self.use_ignore = use_ignore
+        self.labels_list = labels_list #labels.split(',')
 
     @staticmethod
     def generate_item_info():
@@ -84,14 +85,16 @@ class GenerateUtil:
         return licenses
 
     @staticmethod
-    def generate_item_categories():
-        categories = [
-            {
-                'id': 1,
-                'name': 'text',
-                'supercategory': 'instance',
-            }
-        ]
+    def generate_item_categories(labels_list):
+        categories = []
+        for idx, label in enumerate(labels_list):
+            categories.append(
+                {
+                    'id': idx+1,
+                    'name': label,
+                    'supercategory': 'instance',
+                }
+            )
         return categories
 
     @staticmethod
@@ -126,7 +129,7 @@ class GenerateUtil:
         return items_annotation.append(annotation_info)
 
     @staticmethod
-    def generate_item_true_annotation(items_annotation, image_id, image_index, image_size, label_path_template, use_ignore):
+    def generate_item_true_annotation(items_annotation, image_id, image_index, image_size, label_path_template, use_ignore, labels_list):
         label_path = path.abspath(label_path_template % image_index)
         with open(label_path) as f:
             for line in f.readlines():
@@ -140,10 +143,11 @@ class GenerateUtil:
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
                 keypoints = np.hstack((points, 2*np.ones((points.shape[0], 1), dtype=np.int8))) 
                 keypoints = keypoints.flatten().tolist()
+                category_id = labels_list.index(data[8])+1
                 annotation_info = {
                     "id": len(items_annotation) + 1,
                     "image_id": image_id,
-                    "category_id": 1,
+                    "category_id": category_id,
                     "iscrowd": 0 if not use_ignore else iscrowd,
                     "area": area,
                     "bbox": bounding_box,
@@ -158,7 +162,7 @@ class GenerateUtil:
     def get_coco_label(self):
         item_info = self.generate_item_info()
         item_licenses = self.generate_item_licenses()
-        item_categories = self.generate_item_categories()
+        item_categories = self.generate_item_categories(self.labels)
         coco_label = CocoLabel(item_info, item_licenses, item_categories)
         return coco_label
 
