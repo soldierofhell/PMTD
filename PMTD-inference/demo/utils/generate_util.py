@@ -162,7 +162,7 @@ class GenerateUtil:
     def get_coco_label(self):
         item_info = self.generate_item_info()
         item_licenses = self.generate_item_licenses()
-        item_categories = self.generate_item_categories(self.labels)
+        item_categories = self.generate_item_categories(self.labels_list)
         coco_label = CocoLabel(item_info, item_licenses, item_categories)
         return coco_label
 
