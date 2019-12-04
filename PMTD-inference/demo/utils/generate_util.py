@@ -90,7 +90,7 @@ class GenerateUtil:
         for idx, label in enumerate(labels_list):
             categories.append(
                 {
-                    'id': idx+1,
+                    'id': idx, #+1,
                     'name': label,
                     'supercategory': 'instance',
                 }
@@ -143,11 +143,11 @@ class GenerateUtil:
                 bounding_box = cv2.boundingRect(points)  # [x, y, w, h]
                 keypoints = np.hstack((points, 2*np.ones((points.shape[0], 1), dtype=np.int8))) 
                 keypoints = keypoints.flatten().tolist()
-                category_id = labels_list.index(data[8].strip())+1
+                category_id = labels_list.index(data[8].strip()) #+1
                 annotation_info = {
                     "id": len(items_annotation) + 1,
                     "image_id": image_id,
-                    "category_id": category_id,
+                    "category_id": category_id, # +1
                     "iscrowd": 0 if not use_ignore else iscrowd,
                     "area": area,
                     "bbox": bounding_box,
